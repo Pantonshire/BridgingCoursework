@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['tompanton.pythonanywhere.com']
 
+# Add localhost as an allowed host if the server is running in debug mode
+if DEBUG:
+    ALLOWED_HOSTS += ['localhost']
+
 
 # Application definition
 
