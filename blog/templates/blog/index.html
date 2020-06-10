@@ -8,9 +8,9 @@
 
     {% for post in posts %}
         <div>
-            <a href="/post/{{post.path}}">
-                <h2>{{post.title}}</h2>
-            </a>
+            <h2>
+                <a href="/post/{{post.path}}">{{post.title}}</a>
+            </h2>
             <p>{{post.date|date:'D jS M, Y'}}</p>
             <p>{{post.summary|linebreaksbr}}</p>
         </div>
