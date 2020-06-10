@@ -8,3 +8,6 @@ class Post(models.Model):
     text = models.TextField()
     published = models.BooleanField(default=False, null=False)
     date = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return "%s by %s" % (self.title, self.author.username)
