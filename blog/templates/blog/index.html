@@ -1,16 +1,8 @@
- {% load static %}
+{% extends 'blog/blog_page.html' %}
 
-<!doctype html>
+{% block title %}Index{% endblock %}
 
-<html lang="en-GB">
-<head>
-    <meta charset="utf-8">
-    <title>Index</title>
-    <meta name="author" content="Tom Panton">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-</head>
-
-<body>
+{% block content %}
     <h1>Hello world!</h1>
     <p>Lorem ipsum</p>
 
@@ -20,5 +12,4 @@
             <p>{{post.content|linebreaksbr}}</p>
         </div>
     {% endfor %}
-</body>
-</html>
+{% endblock %}
