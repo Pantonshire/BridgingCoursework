@@ -3,6 +3,7 @@ from django.conf import settings
 from django.utils import timezone
 
 class Post(models.Model):
+    path = models.CharField(max_length=255, unique=True, blank=False, null=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=False, null=False)
     title = models.CharField(max_length=255, blank=False, null=False)
     content = models.TextField(blank=False, null=False)
@@ -10,4 +11,4 @@ class Post(models.Model):
     date = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return "%s by %s" % (self.title, self.author.username)
+        return "%s (by %s)" % (self.title, self.author.username)
