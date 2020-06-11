@@ -1,0 +1,10 @@
+{% extends 'blog/blog_page.html' %}
+
+{% block content %}
+    <h1>{% block header %}{% endblock %}</h1>
+    <form action={% url 'submit_post' %} method={% block method %}{% endblock %}>
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">{% block submit_text %}{% endblock %}</button>
+    </form>
+{% endblock %}
