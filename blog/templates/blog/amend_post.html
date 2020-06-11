@@ -2,6 +2,8 @@
 
 {% block header %}Edit post: /post/{{post.path}}{% endblock %}
 
-{% block method %}PUT{% endblock %}
+{% block action %}{% url 'submit_amend_post' post_path=post.path %}{% endblock %}
+
+{% block method %}POST{% endblock %}
 
 {% block submit_text %}Update{% endblock %}

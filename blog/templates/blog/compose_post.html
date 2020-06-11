@@ -2,6 +2,8 @@
 
 {% block header %}Write a new post{% endblock %}
 
+{% block action %}{% url 'submit_compose_post' %}{% endblock %}
+
 {% block method %}POST{% endblock %}
 
 {% block submit_text %}Create{% endblock %}
