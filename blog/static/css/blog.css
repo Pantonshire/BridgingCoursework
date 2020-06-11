@@ -5,3 +5,12 @@ body {
 #Content {
     padding: 1em 5em;
 }
+
+.form input, .form button, .form textarea {
+    display: block;
+    box-sizing: border-box;
+}
+
+.form textarea {
+    resize: vertical;
+}
