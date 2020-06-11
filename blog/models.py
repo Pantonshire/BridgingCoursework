@@ -14,7 +14,4 @@ class Post(models.Model):
         return "%s (by %s)" % (self.title, self.author.username)
 
     def summary(self):
-        if len(self.content) > 512:
-            return self.content[:509] + "..."
-        else:
-            return self.content
+        return self.content[:509] + "..." if len(self.content) > 512 else self.content
