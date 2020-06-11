@@ -16,11 +16,15 @@ def post(request, post_path):
     })
 
 def compose_post(request):
+    if not request.user.has_perm('blog.add_post'):
+        return HttpResponseForbidden('You do not have permission to create blog posts')
     return render(request, 'blog/compose_post.html', {
         'form': forms.ManagePostForm(),
     })
 
 def amend_post(request, post_path):
+    if not request.user.has_perm('blog.change_post'):
+        return HttpResponseForbidden('You do not have permission to edit blog posts')
     requested_post = models.Post.objects.filter(path=post_path).first()
     if requested_post is None:
         return HttpResponseNotFound('Requested post not found')
@@ -35,6 +39,8 @@ def amend_post(request, post_path):
 
 def submit_post(request):
     if request.method == "POST":
+        if not request.user.has_perm('blog.add_post'):
+            return HttpResponseForbidden('You do not have permission to create blog posts')
         form = forms.ManagePostForm(request.POST)
         if not form.is_valid():
             return HttpResponseBadRequest('Invalid form')
@@ -45,6 +51,8 @@ def submit_post(request):
         post.save()
         return redirect('post', post_path=post.path)
     elif request.method == "PUT":
+        if not request.user.has_perm('blog.change_post'):
+            return HttpResponseForbidden('You do not have permission to edit blog posts')
         #TODO
         pass
     else:
