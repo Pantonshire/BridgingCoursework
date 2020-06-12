@@ -1,0 +1,25 @@
+{% extends 'blog/blog_page.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+    <h1>Hello world!</h1>
+    <p>Lorem ipsum</p>
+
+    {% for post in posts %}
+        <div>
+            <h2>
+                <a href={% url 'post' post_path=post.path %}>{{post.title}}</a>
+            </h2>
+            <p>{{post.date|date:'D jS M, Y'}}</p>
+            <p>{{post.summary|linebreaksbr}}</p>
+        </div>
+    {% endfor %}
+
+    {% if page > 1 %}
+        <a href={% url 'post_list' page_no=prev_page %}>Previous</a>
+    {% endif %}
+    {% if page < max_page %}
+        <a href={% url 'post_list' page_no=next_page %}>Next</a>
+    {% endif %}
+{% endblock %}
