@@ -4,15 +4,17 @@
 
 <html lang="en-GB">
 <head>
-   <meta charset="utf-8">
-   <title>{% block title %}{% endblock %}</title>
-   <meta name="author" content="Tom Panton">
-   <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="author" content="Tom Panton">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 
 <body>
-   <div id="Content">
-       {% block content %}{% endblock %}
-   </div>
+    {% block before_content %}{% endblock %}
+    <div id="Content">
+        {% block content %}{% endblock %}
+    </div>
+    {% block after_content %}{% endblock %}
 </body>
 </html>

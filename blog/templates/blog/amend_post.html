@@ -1,5 +1,7 @@
 {% extends 'blog/manage_post.html' %}
 
+{% block title %}Edit a post{% endblock %}
+
 {% block header %}Edit post: /post/{{post.path}}{% endblock %}
 
 {% block action %}{% url 'submit_amend_post' post_path=post.path %}{% endblock %}

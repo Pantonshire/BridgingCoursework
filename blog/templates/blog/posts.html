@@ -2,24 +2,46 @@
 
 {% block title %}Posts{% endblock %}
 
-{% block content %}
-    <h1>Hello world!</h1>
-    <p>Lorem ipsum</p>
+{% block before_content %}
+    <div id=Title>
+        <h1>Tom Panton's Blog</h1>
+        <h2>A blog made with Django</h2>
+    </div>
 
+    <div id="Header">
+
+    </div>
+{% endblock %}
+
+{% block content %}
     {% for post in posts %}
-        <div>
-            <h2>
-                <a href={% url 'post' post_path=post.path %}>{{post.title}}</a>
-            </h2>
-            <p>{{post.date|date:'D jS M, Y'}}</p>
-            <p>{{post.summary|linebreaksbr}}</p>
+        <div class="postPreview" data-post-url={% url 'post' post_path=post.path %}>
+            <h2>{{post.title}}</h2>
+            <p class="date">{{post.date|date:'D jS M, Y'}}</p>
+            <div class="postSummary">
+                <p>{{post.summary|linebreaksbr}}</p>
+            </div>
+            <p><a href={% url 'post' post_path=post.path %}>See full post</a></p>
         </div>
     {% endfor %}
 
     {% if page > 1 %}
-        <a href={% url 'post_list' page_no=prev_page %}>Previous</a>
+        <a href={% url 'post_list' page_no=prev_page %} style="float:left">Previous</a>
     {% endif %}
     {% if page < max_page %}
-        <a href={% url 'post_list' page_no=next_page %}>Next</a>
+        <a href={% url 'post_list' page_no=next_page %} style="float:right">Next</a>
     {% endif %}
+{% endblock %}
+
+{% block after_content %}
+    <script>
+        window.addEventListener("load", () => {
+            document.querySelectorAll(".postPreview").forEach(preview => {
+                preview.addEventListener("click", () => {
+                    console.log("clicked");
+                    window.location = preview.getAttribute("data-post-url");
+                });
+            });
+        });
+    </script>
 {% endblock %}

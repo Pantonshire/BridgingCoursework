@@ -3,6 +3,7 @@ from unicodedata import name
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from . import constants
 
 class Post(models.Model):
     path = models.CharField(max_length=255, unique=True, blank=False, null=False)
@@ -16,7 +17,10 @@ class Post(models.Model):
         return '%s (by %s)' % (self.title, self.author.username)
 
     def summary(self):
-        return self.content[:509] + '...' if len(self.content) > 512 else self.content
+        if len(self.content) > constants.post_preview_character_limit:
+            return self.content[: constants.post_preview_character_limit - 3] + '...'
+        else:
+            return self.content
 
     def update_time(self):
         self.date = timezone.now()
