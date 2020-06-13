@@ -39,3 +39,8 @@ class Post(models.Model):
             number += 1
             unqiue_path = '%s-%d' % (path, number)
         self.path = unqiue_path
+
+class Comment(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, blank=False, null=False)
+    content = models.TextField(blank=False, null=False)
+    date = models.DateTimeField(blank=True, null=True)
