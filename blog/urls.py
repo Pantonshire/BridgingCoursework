@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth.views import LoginView
 from . import views
 
 urlpatterns = [
@@ -13,4 +14,6 @@ urlpatterns = [
     path('submit/post/compose', views.submit_compose_post, name='submit_compose_post'),
     path('submit/post/<str:post_path>/amend', views.submit_amend_post, name='submit_amend_post'),
     path('submit/comment/<str:post_path>', views.submit_comment, name='submit_comment'),
+
+    path('login', LoginView.as_view(template_name='blog/login.html'), name='login'),
 ]

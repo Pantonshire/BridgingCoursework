@@ -1,0 +1,22 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <title>Log in</title>
+    <meta name="author" content="Tom Panton">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+
+<body>
+    <div id="Content">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

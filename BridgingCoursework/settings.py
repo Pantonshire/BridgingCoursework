@@ -130,3 +130,5 @@ MEDIA_ROOT = '/home/tompanton/BridgingCoursework/media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = '/home/tompanton/BridgingCoursework/static'
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/'
