@@ -44,3 +44,6 @@ class Comment(models.Model):
     post = models.ForeignKey('Post', on_delete=models.CASCADE, blank=False, null=False)
     content = models.TextField(blank=False, null=False)
     date = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return 'Comment #%d for post: "%s"' % (self.id, self.post)

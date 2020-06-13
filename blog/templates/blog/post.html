@@ -14,6 +14,14 @@
     </div>
     <div class="box">
         <h2>Comments ({{comments.count}})</h2>
+        <form action={% url 'submit_comment' post_path=post.path %} method="POST" id="CommentForm">
+            {% csrf_token %}
+            <div>
+                {{comment_form.content.errors}}
+                {{comment_form.content}}
+            </div>
+            <button type="submit">Add comment</button>
+        </form>
         {% for comment in comments %}
             <div class="comment">
                 <p class="date">{{comment.date|date:'d/m/y'}}</p>

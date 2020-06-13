@@ -1,6 +1,7 @@
 import math
 from django.shortcuts import render, redirect
 from django.http import HttpResponseBadRequest, HttpResponseForbidden, HttpResponseNotFound
+from django.utils import timezone
 from . import models, forms, constants
 
 def post_list_first(request):
@@ -42,6 +43,7 @@ def post(request, post_path):
     return render(request, 'blog/post.html', {
         'post': requested_post,
         'comments': comments,
+        'comment_form': forms.CommentForm(),
     })
 
 def compose_post(request):
@@ -128,3 +130,26 @@ def submit_amend_post(request, post_path):
 
         return redirect('post', post_path=requested_post.path)
     return HttpResponseBadRequest('Bad method')
+
+def submit_comment(request, post_path):
+    if request.method != "POST":
+        return HttpResponseBadRequest('Bad method')
+
+    comment_post = models.Post.objects.filter(path=post_path).first()
+
+    if comment_post is None:
+        return HttpResponseNotFound('Requested post not found')
+
+    form = forms.CommentForm(request.POST)
+
+    if not form.is_valid():
+        return HttpResponseBadRequest('Invalid form')
+
+    comment = form.save(commit=False)
+
+    comment.post = comment_post
+    comment.date = timezone.now()
+
+    comment.save()
+
+    return redirect('post', post_path=post_path)

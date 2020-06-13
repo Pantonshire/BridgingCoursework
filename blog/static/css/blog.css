@@ -120,6 +120,35 @@ body {
     padding-right: 2em;
 }
 
+#CommentForm {
+    margin: 1em 0;
+}
+
+#CommentForm textarea {
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+#CommentForm button {
+    background-color: white;
+    border: 1px solid #707070;
+    box-sizing: border-box;
+    padding: 0.5em 0.75em;
+    margin: 0.5em 0;
+    font-size: 1em;
+    font-weight: 300;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.15s ease-out;
+}
+
+#CommentForm button:hover {
+    background-color: #C9D4F2;
+}
+
 .form input, .form button, .form textarea {
     display: block;
     box-sizing: border-box;
@@ -163,6 +192,7 @@ body {
     /* border: 2px solid #9AABD6; */
     border: 2px solid #B8C4E2;
     box-sizing: border-box;
-    padding: 0 0.5em;
+    padding: 0 1em;
     margin: 0.5em 0;
+    font-weight: lighter;
 }
