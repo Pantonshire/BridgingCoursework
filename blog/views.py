@@ -13,7 +13,7 @@ def post_list(request, page_no):
     all_posts = models.Post.objects.filter(published=True).order_by('-date')
     max_page = math.ceil(all_posts.count() / constants.posts_per_page)
 
-    if page_no > max_page:
+    if max_page > 1 and page_no > max_page:
         return redirect('post_list', page_no=max_page)
 
     start_index = (page_no - 1) * constants.posts_per_page
