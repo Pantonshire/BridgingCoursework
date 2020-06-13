@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseBadRequest, HttpResponseForbidden, HttpResponseNotFound
 from . import models, forms, constants
 
-def blog_index(request):
+def post_list_first(request):
     return post_list(request, 1)
 
 def post_list(request, page_no):
@@ -24,6 +24,11 @@ def post_list(request, page_no):
         'max_page': max_page,
         'prev_page': page_no - 1,
         'next_page': page_no + 1,
+    })
+
+def post_archive(request):
+    return render(request, 'blog/archive.html', {
+        'posts': models.Post.objects.filter(published=True).order_by('date'),
     })
 
 def post(request, post_path):

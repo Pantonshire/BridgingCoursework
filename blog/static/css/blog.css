@@ -108,6 +108,14 @@ body {
     font-weight: lighter;
 }
 
+#ArchiveTable th {
+    text-align: left;
+}
+
+#ArchiveTable th, td {
+    padding-right: 2em;
+}
+
 .form input, .form button, .form textarea {
     display: block;
     box-sizing: border-box;

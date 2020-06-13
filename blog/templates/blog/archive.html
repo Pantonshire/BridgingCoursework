@@ -1,0 +1,22 @@
+{% extends 'blog/blog_page.html' %}
+
+{% block title %}Archive{% endblock %}
+
+{% block content %}
+    <div class="box">
+        <h1>Archive</h1>
+        <p>{{posts.count}} posts total</p>
+        <table id="ArchiveTable">
+            <tr>
+                <th>Date</th>
+                <th>Post</th>
+            </tr>
+            {% for post in posts %}
+                <tr>
+                    <td class="date">{{post.date|date:'d/m/y'}}</td>
+                    <td><a href={% url 'post' post_path=post.path %}>{{post.title}}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
