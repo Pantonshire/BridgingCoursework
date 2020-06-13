@@ -12,4 +12,13 @@
             <p>{{post.content|linebreaksbr}}</p>
         </div>
     </div>
+    <div class="box">
+        <h2>Comments ({{comments.count}})</h2>
+        {% for comment in comments %}
+            <div class="comment">
+                <p class="date">{{comment.date|date:'d/m/y'}}</p>
+                <p>{{comment.content|linebreaksbr}}</p>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -37,8 +37,11 @@ def post(request, post_path):
     if requested_post is None:
         return HttpResponseNotFound('Requested post not found')
 
+    comments = models.Comment.objects.filter(post=requested_post).order_by('-date')
+
     return render(request, 'blog/post.html', {
         'post': requested_post,
+        'comments': comments,
     })
 
 def compose_post(request):
