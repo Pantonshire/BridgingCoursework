@@ -108,6 +108,10 @@ body {
     font-weight: lighter;
 }
 
+#ArchiveTable {
+    margin: 2em 0;
+}
+
 #ArchiveTable th {
     text-align: left;
 }
@@ -153,4 +157,12 @@ body {
 
 .date {
     color: #555555;
+}
+
+.comment {
+    /* border: 2px solid #9AABD6; */
+    border: 2px solid #B8C4E2;
+    box-sizing: border-box;
+    padding: 0 0.5em;
+    margin: 0.5em 0;
 }
