@@ -12,6 +12,15 @@
 
 <body>
     {% block before_content %}{% endblock %}
+    <div id="Header">
+        <nav>
+            <ul>
+                <li><a href="/login">Log in</a></li>
+                <li><a href="/posts">Posts</a></li>
+                <li><a href="/archive">Archive</a></li>
+            </ul>
+        </nav>
+    </div>
     <div id="Content">
         {% block content %}{% endblock %}
     </div>

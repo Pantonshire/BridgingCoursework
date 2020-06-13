@@ -3,7 +3,13 @@
 {% block title %}{{post.title}}{% endblock %}
 
 {% block content %}
-    <h1>{{post.title}}</h1>
-    <p>{{post.date|date:'D jS M, Y'}}</p>
-    <p>{{post.content|linebreaksbr}}</p>
+    <div class="box">
+        <h1>{{post.title}}</h1>
+        <p class="date">{{post.date|date:'D jS M, Y'}}</p>
+    </div>
+    <div class="box">
+        <div class="postContent">
+            <p>{{post.content|linebreaksbr}}</p>
+        </div>
+    </div>
 {% endblock %}

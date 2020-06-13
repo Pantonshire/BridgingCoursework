@@ -7,30 +7,29 @@
         <h1>Tom Panton's Blog</h1>
         <h2>A blog made with Django</h2>
     </div>
-
-    <div id="Header">
-
-    </div>
 {% endblock %}
 
 {% block content %}
     {% for post in posts %}
-        <div class="postPreview" data-post-url={% url 'post' post_path=post.path %}>
+        <div class="postPreview box" data-post-url={% url 'post' post_path=post.path %}>
             <h2>{{post.title}}</h2>
             <p class="date">{{post.date|date:'D jS M, Y'}}</p>
-            <div class="postSummary">
+            <div class="postContent">
                 <p>{{post.summary|linebreaksbr}}</p>
             </div>
             <p><a href={% url 'post' post_path=post.path %}>See full post</a></p>
         </div>
     {% endfor %}
 
-    {% if page > 1 %}
-        <a href={% url 'post_list' page_no=prev_page %} style="float:left">Previous</a>
-    {% endif %}
-    {% if page < max_page %}
-        <a href={% url 'post_list' page_no=next_page %} style="float:right">Next</a>
-    {% endif %}
+    <div id="PostPageControl">
+        {% if page > 1 %}
+            <p id="PrevPage"><a href={% url 'post_list' page_no=prev_page %}>Prev</a></p>
+        {% endif %}
+        <p id="PageNo">Page {{page}} of {{max_page}}</p>
+        {% if page < max_page %}
+            <p id="NextPage"><a href={% url 'post_list' page_no=next_page %}>Next</a></p>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block after_content %}
