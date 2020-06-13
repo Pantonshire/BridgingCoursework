@@ -48,7 +48,7 @@ def post(request, post_path):
 
 def compose_post(request):
     if not request.user.has_perm('blog.add_post'):
-        return HttpResponseForbidden('You do not have permission to create blog posts')
+        return redirect('login')
 
     return render(request, 'blog/compose_post.html', {
         'form': forms.ManagePostForm(),
@@ -56,7 +56,7 @@ def compose_post(request):
 
 def amend_post(request, post_path):
     if not request.user.has_perm('blog.change_post'):
-        return HttpResponseForbidden('You do not have permission to edit blog posts')
+        return redirect('login')
 
     requested_post = models.Post.objects.filter(path=post_path).first()
 
