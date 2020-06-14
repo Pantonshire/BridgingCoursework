@@ -12,11 +12,26 @@
 
 <body>
     <div id="Content">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Login</button>
-        </form>
+        <div class="box">
+            <h1 class="textCentre">Log in</h1>
+            <form method="POST" class="form centre">
+                {% csrf_token %}
+                <div class="field">
+                    {{form.username.label_tag}}
+                    {{form.username}}
+                </div>
+                <div class="field">
+                    {{form.password.label_tag}}
+                    {{form.password}}
+                </div>
+                <div class="field">
+                    <button type="submit">Log in</button>
+                </div>
+            </form>
+            {% if form.errors %}
+                <p class="textCentre error">Username / password pair does not match any account</p>
+            {% endif %}
+        </div>
     </div>
 </body>
 </html>

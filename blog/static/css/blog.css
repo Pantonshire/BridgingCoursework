@@ -126,27 +126,6 @@ body {
 
 #CommentForm textarea {
     width: 100%;
-    box-sizing: border-box;
-    resize: vertical;
-    font-size: 1em;
-    font-weight: 300;
-}
-
-#CommentForm button {
-    background-color: white;
-    border: 1px solid #707070;
-    box-sizing: border-box;
-    padding: 0.5em 0.75em;
-    margin: 0.5em 0;
-    font-size: 1em;
-    font-weight: 300;
-    text-decoration: none;
-    color: black;
-    transition: background-color 0.15s ease-out;
-}
-
-#CommentForm button:hover {
-    background-color: #C9D4F2;
 }
 
 .form input, .form button, .form textarea {
@@ -154,8 +133,45 @@ body {
     box-sizing: border-box;
 }
 
+.form.centre label {
+    display: block;
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+.form.centre input, .form.centre button, .form.centre textarea {
+    margin: 0 auto;
+}
+
+.form input[type=text], .form input[type=password], .form textarea {
+    box-sizing: border-box;
+    font-size: 1em;
+    font-weight: 300;
+    padding: 0.5em;
+}
+
 .form textarea {
     resize: vertical;
+}
+
+.form button {
+    background-color: white;
+    border: 1px solid #A6A6A6;
+    box-sizing: border-box;
+    padding: 0.5em 1.5em;
+    margin: 0.5em 0;
+    font-size: 1em;
+    font-weight: 300;
+    text-decoration: none;
+    color: black;
+}
+
+.form button:hover {
+    outline: 3px solid #C9D4F2;
+}
+
+.form .field {
+    margin: 1em 0;
 }
 
 .box {
@@ -172,6 +188,10 @@ body {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.postPreview:hover {
+    outline: 3px solid #8BA1DE;
 }
 
 .postContent {
@@ -195,4 +215,12 @@ body {
     padding: 0 1em;
     margin: 0.5em 0;
     font-weight: lighter;
+}
+
+.error {
+    color: #AD3434
+}
+
+.textCentre {
+    text-align: center;
 }

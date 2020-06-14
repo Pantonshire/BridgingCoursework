@@ -1,10 +1,12 @@
 {% extends 'blog/blog_page.html' %}
 
 {% block content %}
-    <h1>{% block header %}{% endblock %}</h1>
-    <form action={% block action %}{% endblock %} method={% block method %}{% endblock %} class="form">
-        {% csrf_token %}
-        {{form}}
-        <button type="submit">{% block submit_text %}{% endblock %}</button>
-    </form>
+    <div class="box">
+        <h1>{% block header %}{% endblock %}</h1>
+        <form action={% block action %}{% endblock %} method={% block method %}{% endblock %} class="form">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit">{% block submit_text %}{% endblock %}</button>
+        </form>
+    </div>
 {% endblock %}

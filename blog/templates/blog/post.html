@@ -14,7 +14,7 @@
     </div>
     <div class="box">
         <h2>Comments ({{comments.count}})</h2>
-        <form action={% url 'submit_comment' post_path=post.path %} method="POST" id="CommentForm">
+        <form action={% url 'submit_comment' post_path=post.path %} method="POST" id="CommentForm" class="form">
             {% csrf_token %}
             <div>
                 {{comment_form.content.errors}}
