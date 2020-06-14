@@ -1,9 +1,12 @@
-from django.urls import path
+from django.urls import path, re_path
 from django.contrib.auth.views import LoginView
 from . import views
 
 urlpatterns = [
     path('', views.post_list_first, name='blog_index'),
+
+    re_path(r'^.+/$', views.remove_trailing_slash),
+
     path('posts', views.post_list_first, name='post_list_first'),
     path('posts/<int:page_no>', views.post_list, name='post_list'),
     path('archive', views.post_archive, name='post_archive'),

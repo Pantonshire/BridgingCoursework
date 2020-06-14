@@ -4,6 +4,9 @@ from django.http import HttpResponseBadRequest, HttpResponseForbidden, HttpRespo
 from django.utils import timezone
 from . import models, forms, constants
 
+def remove_trailing_slash(request):
+    return redirect(request.path[:-1])
+
 def post_list_first(request):
     return post_list(request, 1)
 
