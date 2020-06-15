@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.post_list_first, name='blog_index'),
 
-    re_path(r'^.+/$', views.remove_trailing_slash),
+    #re_path(r'^.+/$', views.remove_trailing_slash),
 
     path('posts', views.post_list_first, name='post_list_first'),
     path('posts/<int:page_no>', views.post_list, name='post_list'),
